@@ -40,7 +40,7 @@ export const createProduct = async(req, res) => {
         let cloudinaryResponse = null
 
         if(image) {
-            cloudinaryResponse = await cloudinary.uploader(image, {folder: "products"})
+            cloudinaryResponse = await cloudinary.uploader.upload(image, {folder: "products"})
         }
         
         const product = await Product.create({
@@ -66,7 +66,7 @@ export const deleteProduct = async( req, res ) => {
         }
 
         if(product.image) {
-            const publicId = product.image.split("/").pop.split(".")[0];
+            const publicId = product.image.split("/").pop().split(".")[0];
             try {
                 await cloudinary.uploader.destroy(`products/${publicId}`)
                 console.log("Deleted image from cloudinary")
@@ -112,7 +112,7 @@ export const getProductsByCategory = async(req, res) => {
 
     try {
        const products = await Product.find({category});
-        res.json(products);
+        res.json({products});
     } catch( error) {
         console.log("Error in getProductsByCategory controller", error.message);
         res.status(500).json({ message: "Server error", error:error.message})
