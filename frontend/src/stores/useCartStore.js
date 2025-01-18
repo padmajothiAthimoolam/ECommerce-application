@@ -6,7 +6,7 @@ export const useCartStore = create((set, get) => ({
 	cart: [],
 	coupon: null,
 	total: 0,
-	subtotal: 0,
+	subTotal: 0,
 	isCouponApplied: false,
 
 	getMyCoupon: async () => {
@@ -44,7 +44,7 @@ export const useCartStore = create((set, get) => ({
 		}
 	},
 	clearCart: async () => {
-		set({ cart: [], coupon: null, total: 0, subtotal: 0 });
+		set({ cart: [], coupon: null, total: 0, subTotal: 0 });
 	},
 	addToCart: async (product) => {
 		try {
@@ -84,14 +84,14 @@ export const useCartStore = create((set, get) => ({
 	},
 	calculateTotals: () => {
 		const { cart, coupon } = get();
-		const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-		let total = subtotal;
+		const subTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+		let total = subTotal;
 
 		if (coupon) {
-			const discount = subtotal * (coupon.discountPercentage / 100);
-			total = subtotal - discount;
+			const discount = subTotal * (coupon.discountPercentage / 100);
+			total = subTotal - discount;
 		}
 
-		set({ subtotal, total });
+		set({ subTotal, total });
 	},
 }));
