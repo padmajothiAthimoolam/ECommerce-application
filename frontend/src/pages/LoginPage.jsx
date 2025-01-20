@@ -24,7 +24,7 @@ const LoginPage = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       >
-        <h2 className='mt-6 text-center text-3xl font-extralbold text-emerald-400'>Create Your Account</h2>
+        <h2 className='mt-6 text-center text-3xl font-extralbold text-emerald-400'>Login to Your Account</h2>
       </motion.div>
       <motion.div 
       className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'

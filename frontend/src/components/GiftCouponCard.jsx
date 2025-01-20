@@ -51,7 +51,7 @@ const GiftCouponCard = () => {
                 Applied Coupon
             </h3>
             <p className='mt-2 text-sm text-gray-400'>
-                { coupon.code } - {coupon.disconuntPercentage}% off
+                { coupon?.code } - {coupon?.disconuntPercentage}% off
             </p>
             <motion.button
                 type="button"
@@ -64,14 +64,14 @@ const GiftCouponCard = () => {
             </motion.button>
         </div>
       )}
-      (coupon && (
+      {coupon && (
         <div className='mt-4'>
             <h3 className='text-lg font-medium text-gray-300'>Your available Coupon:</h3>
             <p className='mt-2 text-sm text-gray-400'>
-                {coupon.code} - {coupon.disconuntPercentage}% off
+                {coupon?.code} - {coupon?.disconuntPercentage}% off
             </p>
         </div>
-      ))
+      )}
     </motion.div>
   );
 }
