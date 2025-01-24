@@ -32,17 +32,14 @@ export const useProductStore = create((set) => ({
 	},
 	fetchProductsByCategory: async (category) => {
 		set({ loading: true });
-			try {
-				const response = await axios.get(`/products/category/${category}`);
-				console.log('response', response);
-				set({ products: response.data.products, loading: false });
-				console.log("products", response.data.products);
-			} catch (error) {
-				const errorMessage = error.response?.data?.error || "Failed to fetch products";
-				set({ error: errorMessage, loading: false });
-				toast.error(errorMessage);
-			}
-		},
+		try {
+			const response = await axios.get(`/products/category/${category}`);
+			set({ products: response.data.products, loading: false });
+		} catch (error) {
+			set({ error: "Failed to fetch products", loading: false });
+			toast.error(error.response.data.error || "Failed to fetch products");
+		}
+	},
 	deleteProduct: async (productId) => {
 		set({ loading: true });
 		try {

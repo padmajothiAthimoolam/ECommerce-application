@@ -30,7 +30,7 @@ const FeaturedProducts = ({ featuredProducts }) => {
 	};
 
 	const isStartDisabled = currentIndex === 0;
-	const isEndDisabled = currentIndex >= featuredProducts?.length - itemsPerPage;
+	const isEndDisabled = currentIndex >= featuredProducts.length - itemsPerPage;
 
 	return (
 		<div className='py-12'>
